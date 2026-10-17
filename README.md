@@ -1,4 +1,4 @@
-# ChatGPT-Playbook
+
 
  The Better Prompt Formula
 
