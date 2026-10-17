@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Better Prompt Formula — Free Reference Card | The Digital Hubs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:     #0F1B2D;
+    --navy-mid: #162236;
+    --navy-lt:  #1E3050;
+    --blue:     #1C6EF2;
+    --blue-lt:  #EEF4FF;
+    --blue-md:  #DDEAFF;
+    --ink:      #0F1B2D;
+    --mid:      #6B7A90;
+    --rule:     #D0D8E4;
+    --off:      #FAFBFC;
+    --white:    #FFFFFF;
+    --gold:     #B8881A;
+    --gold-lt:  #FFF8E8;
+    --red-lt:   #FEF0EF;
+    --red-mid:  #C0392B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--off);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── WRAPPER ── */
+  .page {
+    max-width: 700px;
+    margin: 40px auto;
+    background: var(--white);
+    box-shadow: 0 4px 32px rgba(15,27,45,.10);
+  }
+
+  @media (max-width: 740px) {
+    .page { margin: 0; box-shadow: none; }
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 36px 44px 32px;
+    border-top: 5px solid var(--blue);
+  }
+
+  .brand {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #4A7AAA;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  .header p {
+    font-size: 13px;
+    color: #7AA3CC;
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  /* ── CARD BODY ── */
+  .card-body {
+    padding: 36px 44px;
+  }
+
+  .intro {
+    font-size: 14px;
+    color: #3A4A60;
+    line-height: 1.7;
+    border-left: 3px solid var(--blue);
+    padding-left: 16px;
+    margin-bottom: 32px;
+  }
+
+  /* ── FORMULA TABLE ── */
+  .formula {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 36px;
+  }
+
+  .formula tr:nth-child(odd)  .formula-content { background: var(--blue-lt); }
+  .formula tr:nth-child(even) .formula-content { background: var(--white); }
+
+  .formula tr { border-bottom: 2px solid var(--white); }
+
+  .formula-letter {
+    width: 52px;
+    min-width: 52px;
+    background: var(--blue);
+    text-align: center;
+    vertical-align: top;
+    padding: 18px 0;
+  }
+
+  .formula-letter span {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+  }
+
+  .formula-content {
+    padding: 16px 20px;
+    vertical-align: top;
+  }
+
+  .formula-element {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .formula-desc {
+    font-size: 12.5px;
+    color: #3A4A60;
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+
+  .formula-example {
+    font-size: 11.5px;
+    color: var(--blue);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0 0 28px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: 560px) {
+    .compare { grid-template-columns: 1fr; }
+  }
+
+  .compare-cell {
+    padding: 16px 18px;
+  }
+
+  .compare-cell.before { background: var(--red-lt); }
+  .compare-cell.after  { background: var(--blue-lt); }
+
+  .compare-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .compare-cell.before .compare-label { color: var(--red-mid); }
+  .compare-cell.after  .compare-label { color: var(--blue); }
+
+  .compare-text {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  /* ── TIPS ── */
+  .tips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: 560px) {
+    .tips { grid-template-columns: 1fr; }
+  }
+
+  .tip {
+    display: flex;
+    gap: 12px;
+    padding: 16px 14px;
+    background: var(--blue-lt);
+    align-items: flex-start;
+  }
+
+  .tip:nth-child(2) { background: var(--white); border: 1px solid var(--rule); }
+
+  .tip-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+    opacity: .25;
+  }
+
+  .tip-content {}
+
+  .tip-bold {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .tip-detail {
+    font-size: 11.5px;
+    color: var(--mid);
+    line-height: 1.55;
+  }
+
+  /* ── BACK / OFFER SECTION ── */
+  .offer {
+    background: var(--navy);
+    padding: 52px 44px 48px;
+    border-top: 5px solid var(--blue);
+  }
+
+  .offer-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #4A7AAA;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .offer h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .offer-sub {
+    font-size: 14px;
+    color: #7AA3CC;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+
+  .offer-rule {
+    width: 48px;
+    border: none;
+    border-top: 2px solid var(--blue);
+    margin: 0 auto 36px;
+  }
+
+  /* Feature list */
+  .features {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .features li {
+    display: flex;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--navy-lt);
+    align-items: flex-start;
+  }
+
+  .features li:last-child { border-bottom: none; }
+
+  .feat-dash {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+
+  .feat-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #C8D8EE;
+  }
+
+  .feat-text strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* CTA box */
+  .cta-box {
+    background: #07111E;
+    border: 1.5px solid var(--blue);
+    padding: 30px 32px;
+    text-align: center;
+  }
+
+  .cta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .cta-copy {
+    font-size: 13px;
+    color: #7AA3CC;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-url {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5A9FF0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(90,159,240,.35);
+    padding-bottom: 2px;
+    transition: color .15s, border-color .15s;
+  }
+
+  .cta-url:hover, .cta-url:focus {
+    color: var(--white);
+    border-color: rgba(255,255,255,.4);
+    outline: none;
+  }
+
+  .offer-caption {
+    font-size: 11px;
+    color: #3A5A80;
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 24px;
+    font-style: italic;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; max-width: 100%; }
+    .offer { break-before: page; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <!-- ══ PAGE 1: REFERENCE CARD ══════════════════════════════════════════ -->
+
+  <header class="header">
+    <p class="brand">The Digital Hubs</p>
+    <h1>The Better Prompt Formula</h1>
+    <p>A free quick-reference card from the ChatGPT Business Cheat Sheet &amp; Prompt Playbook — the complete AI reference guide for freelancers, entrepreneurs, and content creators.</p>
+  </header>
+
+  <div class="card-body">
+
+    <p class="intro">
+      The quality of what you get from ChatGPT depends almost entirely on the quality of what you ask. This formula gives you a simple, reusable structure for writing prompts that produce useful, specific results — consistently.
+    </p>
+
+    <!-- Formula table -->
+    <table class="formula" aria-label="The Better Prompt Formula">
+      <tbody>
+        <tr>
+          <td class="formula-letter"><span>R</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Role</p>
+            <p class="formula-desc">Tell ChatGPT what expertise or perspective to adopt. This shapes the tone, vocabulary, and angle of every response.</p>
+            <p class="formula-example">e.g. "Act as an experienced freelance copywriter specialising in B2B service businesses."</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="formula-letter"><span>T</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Task</p>
+            <p class="formula-desc">State precisely what you want it to do. Use specific action verbs: write, compare, summarise, draft, rewrite, analyse.</p>
+            <p class="formula-example">e.g. "Write three subject line options for a cold outreach email."</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="formula-letter"><span>C</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Context</p>
+            <p class="formula-desc">Provide the background it needs — about your business, the situation, or the materials you're working with.</p>
+            <p class="formula-example">e.g. "My business offers virtual bookkeeping to freelance designers with 1–5 clients."</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="formula-letter"><span>A</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Audience</p>
+            <p class="formula-desc">Describe who will read or use the output. Role, industry, and knowledge level all help shape the response.</p>
+            <p class="formula-example">e.g. "The audience is a solo designer with no accounting background."</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="formula-letter"><span>R</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Requirements</p>
+            <p class="formula-desc">Set constraints: tone, format, word count, language level, things to include or avoid.</p>
+            <p class="formula-example">e.g. "Plain language. No jargon. Keep each subject line under 8 words."</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="formula-letter"><span>E</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Examples</p>
+            <p class="formula-desc">When relevant, show what a good result looks like. Even one example significantly improves output quality.</p>
+            <p class="formula-example">e.g. "I liked this style: 'Your books, sorted. No spreadsheets needed.'"</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="formula-letter"><span>R</span></td>
+          <td class="formula-content">
+            <p class="formula-element">Review</p>
+            <p class="formula-desc">After receiving the response, check it carefully and ask for targeted improvements where needed.</p>
+            <p class="formula-example">e.g. "Please revise this to be more conversational and under 150 words."</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Before / After -->
+    <hr class="divider">
+    <p class="section-title">See it in action</p>
+
+    <div class="compare">
+      <div class="compare-cell before">
+        <p class="compare-label">Before — vague</p>
+        <p class="compare-text">Write me an email about my service.</p>
+      </div>
+      <div class="compare-cell after">
+        <p class="compare-label">After — structured</p>
+        <p class="compare-text">Act as a professional copywriter. Write a 150-word introduction email for [Business Name], a [Business Type] that helps [Target Customer] with [Core Service]. Addressed to [Recipient Type]. Tone: warm and professional. End with one clear call to action: [Desired Next Step].</p>
+      </div>
+    </div>
+
+    <!-- Three tips -->
+    <hr class="divider">
+    <p class="section-title">3 things to know</p>
+
+    <div class="tips">
+      <div class="tip">
+        <span class="tip-num">1</span>
+        <div class="tip-content">
+          <p class="tip-bold">Not every element is required.</p>
+          <p class="tip-detail">Short tasks may need only Role + Task. Complex tasks benefit from all seven.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tip-num">2</span>
+        <div class="tip-content">
+          <p class="tip-bold">Always replace [placeholders].</p>
+          <p class="tip-detail">A prompt with unfilled brackets produces a generic response. Fill every one with your real details.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <span class="tip-num">3</span>
+        <div class="tip-content">
+          <p class="tip-bold">Review before you use.</p>
+          <p class="tip-detail">AI output can contain errors. Fact-check claims, confirm tone, and edit before publishing or sending.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /card-body -->
+
+
+  <!-- ══ PAGE 2: OFFER ════════════════════════════════════════════════════ -->
+
+  <section class="offer">
+
+    <p class="offer-eyebrow">Free resource from The Digital Hubs</p>
+
+    <h2>Want the full playbook?</h2>
+
+    <p class="offer-sub">
+      This card is one page from a complete business AI reference guide — built for freelancers, entrepreneurs, content creators, and virtual assistants.
+    </p>
+
+    <hr class="offer-rule">
+
+    <ul class="features" aria-label="What's included in the full playbook">
+      <li>
+        <span class="feat-dash">—</span>
+        <span class="feat-text"><strong>30 copy-ready prompts</strong> across 10 business categories — emails, content, client management, planning, digital products, and more.</span>
+      </li>
+      <li>
+        <span class="feat-dash">—</span>
+        <span class="feat-text"><strong>5 complete workflows</strong> that chain prompts together to complete real business tasks, start to finish.</span>
+      </li>
+      <li>
+        <span class="feat-dash">—</span>
+        <span class="feat-text"><strong>6 printable cheat sheets</strong> including this formula, communication guides, content references, and an AI safety checklist.</span>
+      </li>
+      <li>
+        <span class="feat-dash">—</span>
+        <span class="feat-text"><strong>7 worksheets &amp; templates</strong> to document your processes, track prompt results, and build repeatable systems.</span>
+      </li>
+      <li>
+        <span class="feat-dash">—</span>
+        <span class="feat-text"><strong>The 7-Day Challenge</strong> — one focused action per day to build lasting AI work habits.</span>
+      </li>
+      <li>
+        <span class="feat-dash">—</span>
+        <span class="feat-text"><strong>Responsible AI guidance</strong> — what to verify, what to protect, and when to get professional review.</span>
+      </li>
+    </ul>
+
+    <div class="cta-box">
+      <p class="cta-label">Get the full playbook</p>
+      <p class="cta-copy">Download the complete guide — 30 prompts, 5 workflows, 6 cheat sheets, 7 worksheets, and a 7-day challenge. Instant download.</p>
+      <a href="YOUR-WEBSITE-URL-HERE" class="cta-url">your-website.com/playbook</a>
+    </div>
+
+    <p class="offer-caption">
+      No income guarantees, invented testimonials, or fabricated statistics.<br>
+      A practical reference guide for professionals who want to use AI more effectively.
+    </p>
+
+  </section>
+
+</main>
+
+</body>
+</html>
